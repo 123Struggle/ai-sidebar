@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sidebar</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div id="header">
+    <div class="header-left">
+      <span class="logo">AI</span>
+      <span class="title">AI Sidebar</span>
+    </div>
+    <div class="header-actions">
+      <button id="new-chat-btn" title="New Chat">+</button>
+      <button id="history-btn" title="History">&#128337;</button>
+      <button id="settings-btn" title="Settings">&#9881;</button>
+    </div>
+  </div>
+
+  <div id="settings-panel" class="hidden">
+    <div class="settings-drawer">
+      <div class="settings-header">
+        <h2>设置</h2>
+        <button id="close-settings">&times;</button>
+      </div>
+      <div class="settings-body">
+        <div class="settings-group">
+          <div class="settings-group-title">
+            <span class="settings-icon">&#9881;</span> API 配置
+          </div>
+          <label for="endpoint-url">Endpoint URL</label>
+          <input type="text" id="endpoint-url" placeholder="https://your-api.com/v1" />
+          <label for="api-key">API Key</label>
+          <div class="input-with-toggle">
+            <input type="password" id="api-key" placeholder="输入你的 API Key" />
+            <button type="button" id="toggle-key" class="input-toggle" title="显示/隐藏">&#128065;</button>
+          </div>
+          <label for="model-id">模型 ID</label>
+          <input type="text" id="model-id" placeholder="如 gpt-4o, deepseek-chat" />
+          <p class="settings-hint-inline">支持 OpenAI 兼容接口（自动补全 /v1/chat/completions）</p>
+        </div>
+
+        <div class="settings-group">
+          <div class="settings-group-title">
+            <span class="settings-icon">&#128172;</span> 助手设置
+          </div>
+          <label for="system-prompt">System Prompt</label>
+          <textarea id="system-prompt" placeholder="如：你是一个有帮助的助手，请用中文回复。" rows="3"></textarea>
+        </div>
+
+        <div class="settings-group">
+          <div class="settings-group-title">
+            <span class="settings-icon">&#127912;</span> 外观
+          </div>
+          <div class="theme-options">
+            <button class="theme-btn" data-theme="auto">&#9788; 自动</button>
+            <button class="theme-btn" data-theme="light">&#9728; 浅色</button>
+            <button class="theme-btn" data-theme="dark">&#9790; 深色</button>
+          </div>
+        </div>
+      </div>
+      <div class="settings-footer">
+        <button id="save-settings" class="btn-primary">&#10003; 保存</button>
+        <button id="cancel-settings" class="btn-secondary">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="history-panel" class="hidden">
+    <div class="history-header">
+      <h2>History</h2>
+      <button id="close-history">&times;</button>
+    </div>
+    <div id="history-list"></div>
+  </div>
+
+  <div id="chat-container">
+    <div id="messages"></div>
+  </div>
+
+  <div id="action-bar">
+    <button id="summarize-btn">≡ 摘要</button>
+    <button id="translate-btn">文A 翻译</button>
+  </div>
+
+  <div id="input-area">
+    <textarea id="user-input" placeholder="Ask anything..." rows="1"></textarea>
+    <button id="send-btn" title="Send">&#9654;</button>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
